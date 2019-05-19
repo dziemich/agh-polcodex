@@ -77,6 +77,7 @@ fun Node.transform(operation: (Node) -> Node) : Node {
 
 //
 // Sandy specific part
+// Sandy specific part
 //
 
 data class SandyFile(val statements : List<Statement>, override val position: Position? = null) :
@@ -159,4 +160,7 @@ data class Print(val value: Expression, override val position: Position? = null)
     Statement
 
 data class IfStatement(val condition: Expression, val trueStatement: Statement, val falseStatement: Statement, override val position: Position? = null) :
+    Statement
+
+data class FunctionStatement(val declaration: String, val arguments: List<Expression>, val statements : List<Statement>, override val position: Position? = null) :
     Statement

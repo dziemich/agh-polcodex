@@ -17,6 +17,11 @@ MUL                : 'TABLICZKA_MNOZENIA_PROSZE';
 DIV                : 'PODZIEL_MIE_TO';
 AND                : 'I';
 
+FUNCTION           : 'MAJSTRUJEMY_FUNKCYJKE';
+ENDFUNCTION        : 'KONIEC_MAJSTROWANIA' ;
+ADDITIONALARG      : 'I_TO';
+INVOKEFUNCTION     : 'PRZYZYWAM_CIE_FUNKCJOOO' ;
+
 IFCHECK            : 'SPRAWDZANKO';
 ELSE               : 'A_JAK_NIE';
 
@@ -37,6 +42,7 @@ DIVISION           : '/' ;
 ASSIGN             : 'TO' ;
 LPAREN             : '(' ;
 RPAREN             : ')' ;
+COMMA              : ',' ;
 
 // Identifiers
 ID                 : [_]*[a-z][A-Za-z0-9_]* ;

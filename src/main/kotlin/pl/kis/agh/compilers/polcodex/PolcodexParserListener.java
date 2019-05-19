@@ -52,6 +52,18 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 */
 	void exitIfStatement(PolcodexParser.IfStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code functionStatement}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionStatement(PolcodexParser.FunctionStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code functionStatement}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionStatement(PolcodexParser.FunctionStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code assignmentStatement}
 	 * labeled alternative in {@link PolcodexParser#statement}.
 	 * @param ctx the parse tree
@@ -106,6 +118,26 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 */
 	void exitAssignment(PolcodexParser.AssignmentContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#functionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionDeclaration(PolcodexParser.FunctionDeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#functionDeclaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionDeclaration(PolcodexParser.FunctionDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(PolcodexParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(PolcodexParser.BlockContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code decimalLiteral}
 	 * labeled alternative in {@link PolcodexParser#expression}.
 	 * @param ctx the parse tree
@@ -141,6 +173,18 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConditionalExpression(PolcodexParser.ConditionalExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code functionCall}
+	 * labeled alternative in {@link PolcodexParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(PolcodexParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code functionCall}
+	 * labeled alternative in {@link PolcodexParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(PolcodexParser.FunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code intLiteral}
 	 * labeled alternative in {@link PolcodexParser#expression}.
@@ -201,6 +245,36 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVarReference(PolcodexParser.VarReferenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#argument}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgument(PolcodexParser.ArgumentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#argument}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgument(PolcodexParser.ArgumentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#argumentList}.
+	 * @param ctx the parse tree
+	 */
+	void enterArgumentList(PolcodexParser.ArgumentListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#argumentList}.
+	 * @param ctx the parse tree
+	 */
+	void exitArgumentList(PolcodexParser.ArgumentListContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionName(PolcodexParser.FunctionNameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#functionName}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionName(PolcodexParser.FunctionNameContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PolcodexParser#ifStmt}.
 	 * @param ctx the parse tree

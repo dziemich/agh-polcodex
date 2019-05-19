@@ -16,20 +16,17 @@ object Config {
   const val LOWER: String = "MNIJ_NIZ"
 }
 
-enum class CompareSign private constructor(private val sign: String, val opcode: Int) {
-  EQUAL("==", Opcodes.IFEQ),
-  NOT_EQUAL("!=", Opcodes.IFNE),
-  LESS("<", Opcodes.IFLT),
-  GREATER(">", Opcodes.IFGT),
-  LESS_OR_EQUAL("<=", Opcodes.IFLE),
-  GRATER_OR_EQAL(">=", Opcodes.IFGE);
+enum class CompareSign private constructor(val opcode: Int) {
+  EQUAL(Opcodes.IFEQ),
+  NOT_EQUAL(Opcodes.IFNE),
+  LESS(Opcodes.IFLT),
+  GREATER(Opcodes.IFGT),
+  LESS_OR_EQUAL(Opcodes.IFLE),
+  GRATER_OR_EQAL(Opcodes.IFGE);
 
+}
 
-  companion object {
-    fun fromString(sign: String): CompareSign {
-      return Arrays.stream(values()).filter { cmpSign -> cmpSign.sign == sign }
-        .findFirst()
-        .orElseThrow { RuntimeException("Sign not implemented") }
-    }
-  }
+enum class Types private constructor(private val t: String){
+  NUMBER("D"),
+  VOID("V")
 }
