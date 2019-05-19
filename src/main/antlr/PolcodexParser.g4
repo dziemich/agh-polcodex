@@ -28,8 +28,8 @@ expression :
            | op=DIV left=expression AND right=expression                   # binaryOperation
            | cmp=EQUAL left=expression AND right=expression                # conditionalExpression
            | cmp=NOTEQUAL left=expression AND right=expression             # conditionalExpression
-           | cmp=GREATER left=expression AND right=expression              # conditionalExpression
-           | cmp=LOWER left=expression AND right=expression                # conditionalExpression
+           | left=expression cmp=GREATER  right=expression                 # conditionalExpression
+           | left=expression cmp=LOWER  right=expression                   # conditionalExpression
            | value=expression AS targetType=type                           # typeConversion
            | INVOKEFUNCTION functionName LPAREN argumentList RPAREN                       # functionCall
            | LPAREN expression RPAREN                                      # parenExpression

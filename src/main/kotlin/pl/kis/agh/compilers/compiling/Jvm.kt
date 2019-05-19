@@ -240,7 +240,82 @@ fun processStatement(s: Statement, vars: Map<String, Var>, mainMethodWriter: Met
             cw
           )
           mainMethodWriter.visitLabel(endLabel)
-        };
+        }
+        is NotEqualExpression -> {
+          s.condition.left.push(mainMethodWriter, vars)
+          s.condition.right.push(mainMethodWriter, vars)
+          mainMethodWriter.visitInsn(Opcodes.ISUB);
+          val endLabel = Label()
+          val trueLabel = Label()
+          mainMethodWriter.visitJumpInsn(CompareSign.NOT_EQUAL.opcode, trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_0)
+          processStatement(
+            s.falseStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitJumpInsn(Opcodes.GOTO, endLabel)
+          mainMethodWriter.visitLabel(trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_1)
+          processStatement(
+            s.trueStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitLabel(endLabel)
+        }
+        is GreaterExpression -> {
+          s.condition.left.push(mainMethodWriter, vars)
+          s.condition.right.push(mainMethodWriter, vars)
+          mainMethodWriter.visitInsn(Opcodes.ISUB);
+          val endLabel = Label()
+          val trueLabel = Label()
+          mainMethodWriter.visitJumpInsn(CompareSign.GREATER.opcode, trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_0)
+          processStatement(
+            s.falseStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitJumpInsn(Opcodes.GOTO, endLabel)
+          mainMethodWriter.visitLabel(trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_1)
+          processStatement(
+            s.trueStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitLabel(endLabel)
+        }
+        is LowerExpression -> {
+          s.condition.left.push(mainMethodWriter, vars)
+          s.condition.right.push(mainMethodWriter, vars)
+          mainMethodWriter.visitInsn(Opcodes.ISUB);
+          val endLabel = Label()
+          val trueLabel = Label()
+          mainMethodWriter.visitJumpInsn(CompareSign.LESS.opcode, trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_0)
+          processStatement(
+            s.falseStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitJumpInsn(Opcodes.GOTO, endLabel)
+          mainMethodWriter.visitLabel(trueLabel)
+          mainMethodWriter.visitInsn(Opcodes.ICONST_1)
+          processStatement(
+            s.trueStatement,
+            vars,
+            mainMethodWriter,
+            cw
+          )
+          mainMethodWriter.visitLabel(endLabel)
+        }
         else -> throw NumberFormatException();
       }
     }

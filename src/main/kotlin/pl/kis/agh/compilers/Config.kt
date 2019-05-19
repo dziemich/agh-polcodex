@@ -21,8 +21,6 @@ enum class CompareSign private constructor(val opcode: Int) {
   NOT_EQUAL(Opcodes.IFNE),
   LESS(Opcodes.IFLT),
   GREATER(Opcodes.IFGT),
-  LESS_OR_EQUAL(Opcodes.IFLE),
-  GRATER_OR_EQAL(Opcodes.IFGE);
 
 }
 
