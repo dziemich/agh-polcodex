@@ -88,6 +88,18 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 */
 	void exitPrintStatement(PolcodexParser.PrintStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code functionCall}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunctionCall(PolcodexParser.FunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code functionCall}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunctionCall(PolcodexParser.FunctionCallContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PolcodexParser#print}.
 	 * @param ctx the parse tree
 	 */
@@ -173,18 +185,6 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConditionalExpression(PolcodexParser.ConditionalExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code functionCall}
-	 * labeled alternative in {@link PolcodexParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionCall(PolcodexParser.FunctionCallContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code functionCall}
-	 * labeled alternative in {@link PolcodexParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionCall(PolcodexParser.FunctionCallContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code intLiteral}
 	 * labeled alternative in {@link PolcodexParser#expression}.

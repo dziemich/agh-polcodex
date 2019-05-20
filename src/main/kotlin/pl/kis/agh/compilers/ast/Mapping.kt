@@ -54,6 +54,8 @@ fun StatementContext.toAst(considerPosition: Boolean = false): Statement = when 
     functionDeclaration().functionName().ID().text,
     functionDeclaration().argumentList().argument().map { it.expression().toAst(considerPosition) },
     functionDeclaration().functionBody.statement().map { it.toAst(considerPosition) })
+  is FunctionCallContext ->
+    FunctionCall(functionName().text, argumentList().argument().map { it.expression().toAst(considerPosition) }, toPosition(considerPosition))
   else -> throw UnsupportedOperationException(this.javaClass.canonicalName)
 }
 
@@ -72,7 +74,6 @@ fun ExpressionContext.toAst(considerPosition: Boolean = false): Expression = whe
       considerPosition
     ), targetType.toAst(considerPosition), toPosition(considerPosition)
   )
-  is FunctionCallContext -> throw IllegalStateException()
   else -> throw UnsupportedOperationException(this.javaClass.canonicalName)
 }
 

@@ -170,7 +170,6 @@ class JvmCompiler {
 
     root.statements.forEach {
       processStatement(it, vars, mainMethodWriter, cw)
-
     }
 
     mainMethodWriter.visitLabel(methodEnd)
@@ -183,7 +182,12 @@ class JvmCompiler {
 
 }
 
-fun processStatement(s: Statement, vars: Map<String, Var>, mainMethodWriter: MethodVisitor, cw: ClassWriter) {
+fun processStatement(
+  s: Statement,
+  vars: Map<String, Var>,
+  mainMethodWriter: MethodVisitor,
+  cw: ClassWriter
+) {
   when (s) {
     is VarDeclaration -> {
       val type = vars[s.varName]!!.type
@@ -321,26 +325,15 @@ fun processStatement(s: Statement, vars: Map<String, Var>, mainMethodWriter: Met
     }
     is FunctionStatement -> {
       val name = s.declaration
-      val types = s.arguments.map {
-        when (it) {
-          is IntLit -> "I"
-          is VarReference -> "I"
-          else -> throw UnsupportedOperationException();
-        }
-      }
+      val description: String = buildMethodDescription(s.arguments)
 
-      val strb : StringBuilder = StringBuilder();
-      types.forEach {
-        strb.append(it)
-      }
-
-      val description = "(${strb.toString()})V"
       val statements = s.statements
       val access = Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC
 
       val mStart = Label()
       val mEnd = Label()
-      val mv: MethodVisitor = cw.visitMethod(ACC_PUBLIC or ACC_STATIC, name, description, null, null);
+      val mv: MethodVisitor =
+        cw.visitMethod(ACC_PUBLIC or ACC_STATIC, name, description, null, null);
       mv.visitCode();
       mv.visitLabel(mStart)
       statements.forEach { processStatement(it, vars, mv, cw) }
@@ -349,8 +342,30 @@ fun processStatement(s: Statement, vars: Map<String, Var>, mainMethodWriter: Met
       mv.visitEnd()
       mv.visitMaxs(-1, -1)
     }
+    is FunctionCall -> {
+      val methodDescription = buildMethodDescription(s.arguments)
+      mainMethodWriter.visitMethodInsn(
+        Opcodes.INVOKESTATIC,
+        "MyClass",
+        s.functionName,
+        methodDescription,
+        false
+      )
+    }
     else -> throw UnsupportedOperationException(s.javaClass.canonicalName)
   }
+}
+
+private fun buildMethodDescription(arguments: List<Expression>): String {
+  val strb = StringBuilder()
+  arguments.forEach {
+    strb.append( when (it){
+      is IntLit -> "I"
+      else -> throw UnsupportedOperationException()
+    })
+  }
+  return "(${strb.toString()})V"
+
 }
 
 fun main(args: Array<String>) {

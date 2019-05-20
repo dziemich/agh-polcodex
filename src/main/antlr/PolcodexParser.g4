@@ -10,7 +10,9 @@ statement : varDeclaration # varDeclarationStatement
           | ifStmt         # ifStatement
           | functionDeclaration   # functionStatement
           | assignment     # assignmentStatement
-          | print          # printStatement ;
+          | print          # printStatement
+          | INVOKEFUNCTION functionName LPAREN argumentList RPAREN # functionCall
+          ;
 
 print : PRINT LPAREN expression RPAREN ;
 
@@ -31,7 +33,6 @@ expression :
            | left=expression cmp=GREATER  right=expression                 # conditionalExpression
            | left=expression cmp=LOWER  right=expression                   # conditionalExpression
            | value=expression AS targetType=type                           # typeConversion
-           | INVOKEFUNCTION functionName LPAREN argumentList RPAREN                       # functionCall
            | LPAREN expression RPAREN                                      # parenExpression
            | ID                                                            # varReference
            | MINUS expression                                              # minusExpression

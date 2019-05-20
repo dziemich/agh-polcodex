@@ -146,6 +146,9 @@ data class GreaterExpression(val left: Expression, val right: Expression, overri
 
 data class LowerExpression(val left: Expression, val right: Expression, override val position: Position? = null) :
     Expression
+
+data class FunctionCall(val functionName: String, val arguments: List<Expression>, override val position: Position? = null) :
+    Statement
 //
 // Statements
 //

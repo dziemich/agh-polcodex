@@ -100,6 +100,18 @@ public class PolcodexParserBaseListener implements PolcodexParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFunctionCall(PolcodexParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFunctionCall(PolcodexParser.FunctionCallContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrint(PolcodexParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -191,18 +203,6 @@ public class PolcodexParserBaseListener implements PolcodexParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConditionalExpression(PolcodexParser.ConditionalExpressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFunctionCall(PolcodexParser.FunctionCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFunctionCall(PolcodexParser.FunctionCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
