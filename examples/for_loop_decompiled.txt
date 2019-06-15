@@ -1,0 +1,19 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+public class MyClass {
+  public static void main(String[] zmienna) {
+    int zmienna1 = 0;
+
+    while(true) {
+      System.out.println(zmienna1);
+      if (zmienna1 - 10 > 0) {
+        return;
+      }
+
+      ++zmienna1;
+    }
+  }
+}

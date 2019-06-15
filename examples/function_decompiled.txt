@@ -1,0 +1,15 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+public class MyClass {
+  public static void main(String[] zmienna) {
+    f();
+  }
+
+  public static void f() {
+    byte var0 = 0;
+    System.out.println(var0);
+  }
+}

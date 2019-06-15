@@ -1,0 +1,19 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+public class MyClass {
+  public static void main(String[] zmienna) {
+    byte zmienna1 = 10;
+    int suma = zmienna1 + 10;
+    int roznica = zmienna1 - 3;
+    int iloczyn = zmienna1 * 5;
+    int iloraz = zmienna1 / 2;
+    System.out.println(zmienna1);
+    System.out.println(suma);
+    System.out.println(roznica);
+    System.out.println(iloczyn);
+    System.out.println(iloraz);
+  }
+}

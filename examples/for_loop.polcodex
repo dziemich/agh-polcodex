@@ -1,0 +1,2 @@
+MAM zmienna TO 0
+TAK_DLUGO_JAK zmienna OD 0 DO 10 WYPLUJ(zmienna) NO_I_KONIEC_TEGO

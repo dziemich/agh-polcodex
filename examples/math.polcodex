@@ -1,0 +1,10 @@
+MAM zmienna TO 10
+MAM suma TO ILE_TO_RAZEM_BENDZIE zmienna I 10
+MAM roznica TO ODEJMNIJ_MNIE_TO zmienna I 3
+MAM iloczyn TO TABLICZKA_MNOZENIA_PROSZE zmienna I 5
+MAM iloraz TO PODZIEL_MIE_TO zmienna I 2
+WYPLUJ(zmienna)
+WYPLUJ(suma)
+WYPLUJ(roznica)
+WYPLUJ(iloczyn)
+WYPLUJ(iloraz)
