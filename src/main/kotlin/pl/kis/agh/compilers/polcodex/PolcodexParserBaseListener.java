@@ -1,4 +1,4 @@
-// Generated from /Users/michaldziedzic/Downloads/polcodex/src/main/antlr/PolcodexParser.g4 by ANTLR 4.5.1
+// Generated from /Users/michaldziedzic/mojestudiatozart/kompilatory/agh-polcodex/src/main/antlr/PolcodexParser.g4 by ANTLR 4.5.1
 package pl.kis.agh.compilers.polcodex;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -112,6 +112,18 @@ public class PolcodexParserBaseListener implements PolcodexParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterForStatement(PolcodexParser.ForStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForStatement(PolcodexParser.ForStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrint(PolcodexParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -155,6 +167,30 @@ public class PolcodexParserBaseListener implements PolcodexParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFunctionDeclaration(PolcodexParser.FunctionDeclarationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForStmt(PolcodexParser.ForStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForStmt(PolcodexParser.ForStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterForConditions(PolcodexParser.ForConditionsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitForConditions(PolcodexParser.ForConditionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

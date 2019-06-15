@@ -1,4 +1,4 @@
-// Generated from /Users/michaldziedzic/Downloads/polcodex/src/main/antlr/PolcodexParser.g4 by ANTLR 4.5.1
+// Generated from /Users/michaldziedzic/mojestudiatozart/kompilatory/agh-polcodex/src/main/antlr/PolcodexParser.g4 by ANTLR 4.5.1
 package pl.kis.agh.compilers.polcodex;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -100,6 +100,18 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 */
 	void exitFunctionCall(PolcodexParser.FunctionCallContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code forStatement}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterForStatement(PolcodexParser.ForStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code forStatement}
+	 * labeled alternative in {@link PolcodexParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitForStatement(PolcodexParser.ForStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PolcodexParser#print}.
 	 * @param ctx the parse tree
 	 */
@@ -139,6 +151,26 @@ public interface PolcodexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFunctionDeclaration(PolcodexParser.FunctionDeclarationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#forStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterForStmt(PolcodexParser.ForStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#forStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitForStmt(PolcodexParser.ForStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PolcodexParser#forConditions}.
+	 * @param ctx the parse tree
+	 */
+	void enterForConditions(PolcodexParser.ForConditionsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PolcodexParser#forConditions}.
+	 * @param ctx the parse tree
+	 */
+	void exitForConditions(PolcodexParser.ForConditionsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PolcodexParser#block}.
 	 * @param ctx the parse tree

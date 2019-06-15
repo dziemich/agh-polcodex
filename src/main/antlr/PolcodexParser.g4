@@ -12,6 +12,7 @@ statement : varDeclaration # varDeclarationStatement
           | assignment     # assignmentStatement
           | print          # printStatement
           | INVOKEFUNCTION functionName LPAREN argumentList RPAREN # functionCall
+          | forStmt # forStatement
           ;
 
 print : PRINT LPAREN expression RPAREN ;
@@ -21,6 +22,9 @@ varDeclaration : VAR assignment ;
 assignment : ID ASSIGN expression ;
 
 functionDeclaration : FUNCTION functionName LPAREN argumentList RPAREN functionBody=block ENDFUNCTION;
+
+forStmt : FOR forConditions forBody=block ENDFOR;
+forConditions : iterator=expression FROM startExpr=expression TO endExpr=expression ;
 
 block : statement+ ;
 expression :
@@ -38,6 +42,7 @@ expression :
            | MINUS expression                                              # minusExpression
            | INTLIT                                                        # intLiteral
            | DECLIT                                                        # decimalLiteral ;
+
 
 argument : expression ;
 argumentList : argument? (ADDITIONALARG a=argument)* ;

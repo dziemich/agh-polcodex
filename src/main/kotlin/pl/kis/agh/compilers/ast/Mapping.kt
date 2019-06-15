@@ -55,7 +55,18 @@ fun StatementContext.toAst(considerPosition: Boolean = false): Statement = when 
     functionDeclaration().argumentList().argument().map { it.expression().toAst(considerPosition) },
     functionDeclaration().functionBody.statement().map { it.toAst(considerPosition) })
   is FunctionCallContext ->
-    FunctionCall(functionName().text, argumentList().argument().map { it.expression().toAst(considerPosition) }, toPosition(considerPosition))
+    FunctionCall(
+      functionName().text,
+      argumentList().argument().map { it.expression().toAst(considerPosition) },
+      toPosition(considerPosition)
+    )
+  is ForStatementContext -> ForStatement(
+    forStmt().forConditions().iterator.toAst(considerPosition),
+    forStmt().forConditions().startExpr.toAst(considerPosition),
+    forStmt().forConditions().endExpr.toAst(considerPosition),
+    forStmt().forBody.statement().map { it.toAst(considerPosition) },
+    toPosition(considerPosition)
+    )
   else -> throw UnsupportedOperationException(this.javaClass.canonicalName)
 }
 

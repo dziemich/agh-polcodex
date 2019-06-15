@@ -165,5 +165,8 @@ data class Print(val value: Expression, override val position: Position? = null)
 data class IfStatement(val condition: Expression, val trueStatement: Statement, val falseStatement: Statement, override val position: Position? = null) :
     Statement
 
+data class ForStatement(val iterator: Expression, val startExpression: Expression, val endExpression: Expression, val statements: List<Statement>, override val position: Position? = null) :
+    Statement
+
 data class FunctionStatement(val declaration: String, val arguments: List<Expression>, val statements : List<Statement>, override val position: Position? = null) :
     Statement

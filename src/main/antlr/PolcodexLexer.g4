@@ -30,6 +30,10 @@ NOTEQUAL           : 'SOM_ROZNE' ;
 GREATER            : 'WINCYJ_NIZ' ;
 LOWER              : 'MNIJ_NIZ' ;
 
+FOR                : 'TAK_DLUGO_JAK' ;
+FROM               : 'OD' ;
+TO                 : 'DO' ;
+ENDFOR             : 'NO_I_KONIEC_TEGO' ;
 // Literals
 INTLIT             : '0'|[1-9][0-9]* ;
 DECLIT             : '0'|[1-9][0-9]* '.' [0-9]+ ;

@@ -143,7 +143,7 @@ data class Var(val type: SandyType, val index: Int)
 class JvmCompiler {
 
   fun compile(root: SandyFile, name: String): ByteArray {
-    val cw = ClassWriter(ClassWriter.COMPUTE_FRAMES or ClassWriter.COMPUTE_MAXS)
+    val cw = ClassWriter(ClassWriter.COMPUTE_MAXS)
     cw.visit(V1_8, ACC_PUBLIC, name, null, "java/lang/Object", null)
     val mainMethodWriter =
       cw.visitMethod(ACC_PUBLIC or ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null)
@@ -352,6 +352,28 @@ fun processStatement(
         false
       )
     }
+    is ForStatement -> {
+      val incrementationSection = Label()
+      val endLoopSection = Label()
+
+//      s.iterator.push(mainMethodWriter, vars)
+//      s.startExpression.push(mainMethodWriter, vars)
+//      mainMethodWriter.visitJumpInsn(CompareSign.LESS.opcode, incrementationSection)
+
+      mainMethodWriter.visitLabel(incrementationSection)
+      s.statements.forEach {
+        processStatement(it, vars, mainMethodWriter, cw)
+      }
+
+      s.iterator.pushAs(mainMethodWriter, vars, IntType)
+      s.endExpression.push(mainMethodWriter, vars)
+      mainMethodWriter.visitInsn(Opcodes.ISUB);
+      mainMethodWriter.visitJumpInsn(CompareSign.GREATER.opcode, endLoopSection)
+      mainMethodWriter.visitIincInsn(0, 1)
+      mainMethodWriter.visitJumpInsn(GOTO, incrementationSection)
+
+      mainMethodWriter.visitLabel(endLoopSection)
+    }
     else -> throw UnsupportedOperationException(s.javaClass.canonicalName)
   }
 }
@@ -359,10 +381,12 @@ fun processStatement(
 private fun buildMethodDescription(arguments: List<Expression>): String {
   val strb = StringBuilder()
   arguments.forEach {
-    strb.append( when (it){
-      is IntLit -> "I"
-      else -> throw UnsupportedOperationException()
-    })
+    strb.append(
+      when (it) {
+        is IntLit -> "I"
+        else -> throw UnsupportedOperationException()
+      }
+    )
   }
   return "(${strb.toString()})V"
 
