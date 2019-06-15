@@ -5,19 +5,12 @@ POLCODEX compiles to bytecode, and thus can be run on JVM. Written with :heart: 
 
 ### TODOS:
 - [x] Basic mathematical operations (+, -, *, /)
-- [ ] Extended mathematical operations(%)
-- [ ] Comments
-- [ ] Loops
-- [ ] Type System
+- [x] Loops
 - [x] FunctionStaments
 - [x] Function Calls
 - [x] Assignments
 - [x] Variable Declaration
 - [x] If Statements
-- [ ] Else If Statement
 - [x] Print Statements
-- [ ] Testing
-- [ ] Standard Input
 - [x] Type Casting
 - [x] Conditional Expressions
-- [ ] Support for Java Libs
